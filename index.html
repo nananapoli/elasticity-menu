@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性菜单</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav class="nav">
+		<input type="checkbox" id="trigger" onchange="fold();">
+		<input type="checkbox" class="nav-cb" id="menu-cb" >
+		<div class="nav-content">
+			<ul class="nav-items">
+				<li class="nav-item">
+					<input type="checkbox" class="sub-cb" id="submenu-cb" >
+					<span class="nav-item-text">Home</span>
+					<ul class="sub-items">
+						<li class="sub-item"><span class="sub-item-text">napoli</span></li>
+						<li class="sub-item"><span class="sub-item-text">leon</span></li>
+						<li class="sub-item"><span class="sub-item-text">ortiz</span></li>
+						<li class="sub-item"><span class="sub-item-text">dustin</span></li>
+					</ul>
+					<label for="submenu-cb"></label>
+				</li>
+				<li class="nav-item">
+					<input type="checkbox" class="sub-cb" id="submenu-cb2">
+					<span class="nav-item-text">Works</span>
+					<ul class="sub-items">
+						<li class="sub-item"><span class="sub-item-text">betts</span></li>
+						<li class="sub-item"><span class="sub-item-text">nova</span></li>					
+					</ul>
+					<label for="submenu-cb2"></label>
+				</li>
+				<li class="nav-item">
+					<input type="checkbox" class="sub-cb" id="submenu-cb3">
+					<span class="nav-item-text">About</span>
+					<ul class="sub-items">
+						<li class="sub-item"><span class="sub-item-text">trout</span></li>
+						<li class="sub-item"><span class="sub-item-text">harper</span></li>
+						<li class="sub-item"><span class="sub-item-text">kluber</span></li>
+						
+					</ul>
+					<label for="submenu-cb3"></label>
+				</li>
+				<li class="nav-item">
+					<input type="checkbox" class="sub-cb" id="submenu-cb4">
+					<span class="nav-item-text">Contact</span>
+					<ul class="sub-items">
+						<li class="sub-item"><span class="sub-item-text">hosmer</span></li>
+						<li class="sub-item"><span class="sub-item-text">perez</span></li>
+						<li class="sub-item"><span class="sub-item-text">wong</span></li>
+						<li class="sub-item"><span class="sub-item-text">posey</span></li>
+					</ul>
+					<label for="submenu-cb4"></label>
+				</li>
+			</ul>
+		</div>
+		<label class="nav-btn" for="trigger"></label>
+	</nav>
+	<script>
+		function fold () {
+			var sub_cb = document.getElementsByClassName('sub-cb'),
+				nav_cb = document.getElementById('menu-cb'),
+				flag = false;
+
+			for(i = 0; i < 4;i++){
+				if(sub_cb[i].checked){
+					flag = true;
+					break;
+				}
+			}
+
+			if(!nav_cb.checked){//导航条未展开
+				nav_cb.checked = true;
+			}else if(flag){//导航条已展开
+				for(i = 0; i < 4;i++){					
+						sub_cb[i].checked = false;			
+				}
+				var timer = window.setTimeout(function() {
+							nav_cb.checked = false;
+						},1200)	
+			}else{
+				nav_cb.checked = false;
+			}
+			
+		}
+	</script>
+</body>
+</html>
